@@ -9,13 +9,13 @@ import { delay } from 'rxjs/operators';
   selector: 'app-home',
   template: `
 <!-- navbar -->
-<div class="container-fluid bg-danger mb-4">
+    <div class="container-fluid bg-danger mb-4">
       <nav class="navbar d-flex justify-content-between">
         <div>
           <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="home" [routerLinkActiveOptions]="{exact: true}">Fakeflix</a>
-          <a class="btn" [routerLink]="['/profilo']" routerLinkActive="profilo">Profilo</a>
+          <a class="text-black text-decoration-none" [routerLink]="['/profilo']" routerLinkActive="profilo">Profilo</a>
         </div>
-        <a class="btn" (click)="esci()">Esci</a>
+        <a class="text-black text-decoration-none" (click)="esci()">Esci</a>
       </nav>
     </div>
 <!-- stampe card -->
@@ -24,8 +24,15 @@ import { delay } from 'rxjs/operators';
         <div *ngFor="let m of movies">
           <div class="card my-2 rounded" style="width: 18rem; heigth: 25vh;" *ngIf="m != undefined">
             <img src="http://image.tmdb.org/t/p/w500/{{m.poster_path}}" class="card-img-top">
-            <div class="card-body bg-dark">
-              <h5 class="card-title">{{m.title}}</h5>
+            <div class="card-body bg-dark rounded-bottom">
+              <div class="row">
+                <h5 class="card-title col-10">{{m.title}}</h5>
+                <div class="col-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="grey" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -54,8 +61,9 @@ export class HomeComponent implements OnInit {
   constructor(private movie:HomeVisualizerService, private authSrv:AuthService) { }
 
   ngOnInit(): void {
-    delay (2000);
+
     this.movieSub = this.getMovieList()
+
   }
 
   getMovieList() {

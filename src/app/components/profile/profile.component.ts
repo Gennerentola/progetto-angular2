@@ -4,13 +4,14 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-profile',
   template: `
-      <div class="container-fluid bg-danger mb-4">
+  <!-- navbar -->
+    <div class="container-fluid bg-danger mb-4">
       <nav class="navbar d-flex justify-content-between">
         <div>
           <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="home" [routerLinkActiveOptions]="{exact: true}">Fakeflix</a>
-          <a class="btn" [routerLink]="['/profilo']" routerLinkActive="profilo">Profilo</a>
+          <a class="text-black text-decoration-none" [routerLink]="['/profilo']" routerLinkActive="profilo">Profilo</a>
         </div>
-        <a class="btn" (click)="esci()">Esci</a>
+        <a class="text-black text-decoration-none" (click)="esci()">Esci</a>
       </nav>
     </div>
   <!-- Info profilo -->
